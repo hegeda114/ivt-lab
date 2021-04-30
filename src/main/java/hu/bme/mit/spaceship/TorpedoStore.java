@@ -14,7 +14,7 @@ public class TorpedoStore {
   int y = 7;
   int x = 14;
   private int torpedoCount = 0;
-  Random generator = new Random();
+  Random generator = new Random(); //random number
 
   public TorpedoStore(int numberOfTorpedos){
     this.torpedoCount = numberOfTorpedos;
@@ -42,7 +42,7 @@ public class TorpedoStore {
 
     if (r >= FAILURE_RATE) {
       // successful firing
-      this.torpedoCount -= numberOfTorpedos;
+      this.torpedoCount -= numberOfTorpedos; //decrease
       success = true;
     } else {
       // simulated failure
