@@ -1,0 +1,31 @@
+Teszttervezés
+
+Teszt1 - All mode one empty
+    Specifikáció részlet: tries to fire both of the torpedo stores.
+    Leírás: a 2 lövegből single fire esetén valóban csak az egyikből fogyott e lövedék
+    Bemenet: a 2 lövegből a primary üres, és ALL módban adunk le egy lövést
+    Elvárt eredmény: meghiúsult lövés mind a primary mind a secondary löveggel
+
+Teszt2 - Single mode, primary fires for the first time
+    Specifikáció részlet: For the first time the primary store is fired.
+    Leírás: a 2 lövegből ha mindkettőben van elég lőszer és még egyik sem tüzelt, akkor a primary-nek kell először tüzelnie.
+    Bemenet: 2 löveg, egyik sem üres, SINGLE módban adunk le egy lövést
+    Elvárt eredmény: egy sikeres lövés, a primary löveg hívódott
+
+Teszt3 - Single mode, fired alternating
+    Specifikáció részlet: To give some cooling time to the torpedo stores, torpedo stores are fired alternating.
+    Leírás: amennyiben az egymás után több single módban történő lövés kerül leadásra, akkor először az egyik, majd a másik lő
+    Bemenet: 2 löveg, egyik sem üres, 2 egymást követő SINGLE módú lövés
+    Elvárt eredmény: mindkettő lövés sikeres, az elsőt a primary a másodikat a secondary löveg adta le
+
+Teszt4 - Single mode, cant alternate the fire
+    Specifikáció részlet: But if the store next in line is empty, the ship tries to fire the other store.
+    Leírás: ha a soron következő löveg üres, akokr a másikkal próbál lőni
+    Bement: 2 löveg, az egyik teli a másik üres, az üres jönne soron single lövéssel
+    Elvárt eredmény: a soron következő nem lő, viszont a másik igen
+
+Teszt5 - Single mode, does not try to fire after failure
+    Specifikáció részlet: If the fired store reports a failure, the ship does not try to fire the other one.
+    Leírás: ha túlmelegedés miatt sikertelen egy lövés, akkor nem próbálkozik a második löveg is lőni
+    Bement: 2 löveg, egyik sem üres, 1 single lövés ami túlmelegedés miatt sikertelen
+    Elvárt eredmény: nem volt sikeres a lövés, és nem próbálkozott a másik löveggel
