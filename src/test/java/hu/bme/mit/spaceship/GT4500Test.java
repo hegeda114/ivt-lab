@@ -31,6 +31,10 @@ public class GT4500Test {
     boolean result = ship.fireTorpedo(FiringMode.SINGLE);
 
     // Assert
+    verify(mockPrimaryTorpedoStore, times(1)).isEmpty();
+    verify(mockSecondaryTorpedoStore, times(0)).isEmpty();
+    verify(mockPrimaryTorpedoStore, times(1)).fire(1);
+    verify(mockSecondaryTorpedoStore, times(0)).fire(1);
     assertEquals(true, result);
   }
 
@@ -46,6 +50,10 @@ public class GT4500Test {
     boolean result = ship.fireTorpedo(FiringMode.ALL);
 
     // Assert
+    verify(mockPrimaryTorpedoStore, times(1)).isEmpty();
+    verify(mockSecondaryTorpedoStore, times(1)).isEmpty();
+    verify(mockPrimaryTorpedoStore, times(1)).fire(1);
+    verify(mockSecondaryTorpedoStore, times(1)).fire(1);
     assertEquals(true, result);
   }
 
